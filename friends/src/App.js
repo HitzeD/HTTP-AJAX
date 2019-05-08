@@ -3,12 +3,18 @@ import './App.css';
 import axios from 'axios';
 
 import Friends from './components/Friends';
+import Form from './components/Form';
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      friends: []
+      friends: [],
+      search: {
+        name: '',
+        age: 0,
+        email: '',
+      }
     }
   }
 
@@ -17,13 +23,22 @@ class App extends React.Component {
       .then(res => { this.setState({ friends: res.data}) })
       .catch(err => { console.log(err) })
   }
+
+  submitInfo = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      [e.target]: e.target.value,
+    })
+  }
+
+
   render(){
-    console.log(this.state.friends)
     return (
       <div className="App">
         {this.state.friends.map(friend => {
           return <Friends friend={friend} key={friend.id} />
         })}
+        <Form search={this.state.search} onSearch={this.submitInfo} />
       </div>
     );
   }

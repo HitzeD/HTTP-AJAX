@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Friends = props => {
-    console.log(props)
     return(
         <div>
             <h1>{props.friend.name}</h1>
