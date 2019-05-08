@@ -1,0 +1,18 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input{
+    margin: 10px auto;
+    -webkit-box-shadow: 10px 10px 31px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 31px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 31px 0px rgba(0,0,0,0.75)
+
+}
+
+.subBtn{
+    background-color: lightslategray;
+    border-radius: 10px;
+}

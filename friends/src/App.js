@@ -3,7 +3,8 @@ import './App.css';
 import axios from 'axios';
 
 import Friends from './components/Friends';
-import Form from './components/Form';
+import Form from './components/form/Form';
+import Scroll from './components/Scroll';
 
 class App extends React.Component {
   constructor(){
@@ -25,8 +26,6 @@ class App extends React.Component {
   }
 
   submitInfo = (e) => {
-    console.log(e.target.value)
-    console.log(e.target.name)
     this.setState({
       search: {
         ...this.state.friends,
@@ -39,9 +38,11 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        {this.state.friends.map(friend => {
-          return <Friends friend={friend} key={friend.id} />
-        })}
+        <Scroll>
+          {this.state.friends.map(friend => {
+            return <Friends friend={friend} key={friend.id} />
+          })}
+        </Scroll>
         <Form search={this.state.search} onSearch={this.submitInfo} />
       </div>
     );
