@@ -12,7 +12,7 @@ class App extends React.Component {
       friends: [],
       search: {
         name: '',
-        age: 0,
+        age: '',
         email: '',
       }
     }
@@ -26,8 +26,12 @@ class App extends React.Component {
 
   submitInfo = (e) => {
     console.log(e.target.value)
+    console.log(e.target.name)
     this.setState({
-      [e.target]: e.target.value,
+      search: {
+        ...this.state.friends,
+        [e.target.name]: e.target.value,
+      }
     })
   }
 
