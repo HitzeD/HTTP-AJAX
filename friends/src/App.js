@@ -34,13 +34,22 @@ class App extends React.Component {
       .catch(err => console.log(err));
   };
 
+  deleteItem = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => {
+        this.setState({ friends: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
 
   render(){
     return (
       <div className="App">
         <Scroll>
           {this.state.friends.map(friend => {
-            return <Friends friend={friend} key={friend.id} />
+            return <Friends deleteItem={this.deleteItem} friend={friend} key={friend.id} />
           })}
         </Scroll>
         <Form search={this.state.search} addItem={this.addItem} />

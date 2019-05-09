@@ -17,7 +17,7 @@ class Form extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.addItem(this.state.search);
-      };
+    };
 
     submitInfo = (e) => {
         this.setState({
@@ -28,6 +28,7 @@ class Form extends React.Component {
             
         })
     }
+    
 
     
     
