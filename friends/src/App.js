@@ -25,14 +25,14 @@ class App extends React.Component {
       .catch(err => { console.log(err) })
   }
 
-  submitInfo = (e) => {
-    this.setState({
-      search: {
-        ...this.state.friends,
-        [e.target.name]: e.target.value,
-      }
-    })
-  }
+  addItem = item => {
+    axios
+      .post('http://localhost:5000/friends', item)
+      .then(res => {
+        this.setState({ friends: res.data });
+      })
+      .catch(err => console.log(err));
+  };
 
 
   render(){
@@ -43,7 +43,7 @@ class App extends React.Component {
             return <Friends friend={friend} key={friend.id} />
           })}
         </Scroll>
-        <Form search={this.state.search} onSearch={this.submitInfo} />
+        <Form search={this.state.search} addItem={this.addItem} />
       </div>
     );
   }

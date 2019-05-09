@@ -6,6 +6,7 @@ const Friends = props => {
             <h1>{props.friend.name}</h1>
             <h5>{props.friend.age}</h5>
             <h3>{props.friend.email}</h3>
+            <button>Delete</button>
         </div>
     )
 }
