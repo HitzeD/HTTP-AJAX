@@ -11,11 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       friends: [],
-      search: {
-        name: '',
-        age: '',
-        email: '',
-      }
+      
     }
   }
 
@@ -25,14 +21,19 @@ class App extends React.Component {
       .catch(err => { console.log(err) })
   }
 
-  addItem = item => {
+  addItem = friend => {
     axios
-      .post('http://localhost:5000/friends', item)
+      .post('http://localhost:5000/friends', friend)
       .then(res => {
         this.setState({ friends: res.data });
       })
       .catch(err => console.log(err));
   };
+
+  updateFriend = item => {
+    axios.put('http://localhost:5000/friends', item)
+      .then(res => console.log('1'))
+  }
 
   deleteItem = id => {
     axios
@@ -52,7 +53,7 @@ class App extends React.Component {
             return <Friends deleteItem={this.deleteItem} friend={friend} key={friend.id} />
           })}
         </Scroll>
-        <Form search={this.state.search} addItem={this.addItem} />
+        <Form addItem={this.addItem} />
       </div>
     );
   }
